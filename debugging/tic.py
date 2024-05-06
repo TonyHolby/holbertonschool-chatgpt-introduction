@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def print_board(board):
     """Print the current state of the tic-tac-toe board."""
     for row in board:
