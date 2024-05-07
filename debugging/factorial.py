@@ -8,6 +8,9 @@ def factorial(n):
         n -= 1
     return result
 
+if len(sys.argv) < 2:
+    print("Veuillez fournir un nombre en argument.")
+    sys.exit(1)
+
 f = factorial(int(sys.argv[1]))
 print(f)
-
