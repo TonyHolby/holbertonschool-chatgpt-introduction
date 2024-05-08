@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ factorial - A function thats prints the factorial of a number.
     @n: An integer.
-    Return: the value of the factorial of the number.
+    Return: The value of the factorial of the number.
     """
 import sys
 
