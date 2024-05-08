@@ -6,24 +6,32 @@ class Checkbook:
 
     def deposit(self, amount):
         """Deposit money into the checkbook."""
-        if amount <= 0:
-            print("Invalid amount. Please enter a positive value.")
-            return
-        self.balance += amount
-        print(f"Deposited ${amount:.2f}")
-        self._display_balance()
+        try:
+            amount = float(amount)
+            if amount <= 0:
+                print("Invalid amount. Please enter a positive value.")
+                return
+            self.balance += amount
+            print(f"Deposited ${amount:.2f}")
+            self._display_balance()
+        except ValueError:
+            print("Invalid amount. Please enter a valid number.")
 
     def withdraw(self, amount):
         """Withdraw money from the checkbook."""
-        if amount <= 0:
-            print("Invalid amount. Please enter a positive value.")
-            return
-        if amount > self.balance:
-            print("Insufficient funds to complete the withdrawal.")
-        else:
-            self.balance -= amount
-            print(f"Withdrew ${amount:.2f}")
-            self._display_balance()
+        try:
+            amount = float(amount)
+            if amount <= 0:
+                print("Invalid amount. Please enter a positive value.")
+                return
+            if amount > self.balance:
+                print("Insufficient funds to complete the withdrawal.")
+            else:
+                self.balance -= amount
+                print(f"Withdrew ${amount:.2f}")
+                self._display_balance()
+        except ValueError:
+            print("Invalid amount. Please enter a valid number.")
 
     def _display_balance(self):
         """Display the current balance."""
@@ -38,10 +46,10 @@ def main():
         if action == 'exit':
             break
         elif action == 'deposit':
-            amount = float(input("Enter the amount to deposit: $"))
+            amount = input("Enter the amount to deposit: $")
             cb.deposit(amount)  # Call deposit method
         elif action == 'withdraw':
-            amount = float(input("Enter the amount to withdraw: $"))
+            amount = input("Enter the amount to withdraw: $")
             cb.withdraw(amount)  # Call withdraw method
         elif action == 'balance':
             cb._display_balance()  # Call _display_balance method
@@ -50,4 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()  # Start the main function
-
